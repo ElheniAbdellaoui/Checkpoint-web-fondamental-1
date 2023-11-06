@@ -1,0 +1,260 @@
+What is the Difference Between Internet and World Wide Web ?
+
+The main difference between Internet and World Wide Web is that the Internet refers to the hardware while the World Wide Web refers to the software.
+
+The terms Internet and World Wide Web are used interchangeably but they have a difference. Internet is an enormous network of networks. It is the
+
+ massive computer network that connects the devices using copper wires, wireless networks or fiber optic cables. On the other hand, World Wide Web 
+
+(WWW) is a large collection of webpages. These pages are linked to each other using hyperlinks. In brief, World Wide Web is a service provided by Internet.
+
+
+How the web works?
+
+
+How the web works provides a simplified view of what happens when you view a webpage in a web browser on your computer or phone.This theory is not 
+
+essential to writing web code in the short term, but before long you'll really start to benefit from understanding what's happening in the background.
+
+Clients and servers Computers connected to the internet are called clients and servers. A simplified diagram of how they interact might look like this:
+
+
+
+Clients are the typical web user's internet-connected devices (for example, your computer connected to your Wi-Fi, or your phone connected to your mobile 
+
+network) and web-accessing software available on those devices (usually a web browser like Firefox or Chrome).Servers are computers that store webpages,
+
+sites, or apps. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be 
+
+displayed in the user's web browser.
+
+
+Understanding what protocols, servers, and API are?
+
+
+Application programming interface (API) allows different software applications to communicate with one another to share data. It acts as an abstraction 
+
+layer to help developers integrate different software components and leverage existing services without understanding the implementation details. APIs 
+
+use different protocols to transfer data. In this Answer, we will explore different API protocols.Types of API protocolsThere are multiple API protocols, 
+
+and the choice depends on the application's requirements and use cases. Below we can see some common API protocols.
+
+SOAP (Simple Object Access Protocol)
+
+REST (representational state transfer)
+
+RPC (remote procedure call)
+
+Simple Object Access Protocol (SOAP)
+
+SOAP is a protocol that uses XML format to exchange data between client and server applications. They contain an envelope tag that encapsulates the message and its related information. The related information includes the headers and the message body. It is flexible as it isn't tied to any specific programming language. Rather, it allows software applications written in different programming languages to communicate by adhering to the SOAP protocol rules.
+
+Let's see what a SOAP request and response look like. Both the response and request can be sent through an HTTP request.
+
+Example
+
+A SOAP request is in XML format. The SOAP request XML format is shown below:
+
+
+XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:example="http://www.example.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <example:MyRequest>
+            <example:Parameter1>Value1</example:Parameter1>
+            <example:Parameter2>Value2</example:Parameter2>
+        </example:MyRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
+SOAP request
+Line 1: The <soapenv:Envelope> is the root element that encapsulates the entire SOAP message. xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" specifies that any elements in the SOAP message with the soapenv prefix belong to the SOAP envelope namespace.
+
+Line 2: The <soapenv:Header> element is optional and can contain headers for additional information.
+
+Line 3: The <soapenv:Body> element encapsulates the actual request body.
+
+Line 4: The <example:MyRequest> element represents the specific request operation that we invoke.
+
+Lines 5–6: <example:Parameter1> and <example:Parameter2> are parameters with specific values that the server will need.
+
+The server sends the SOAP response once the operations on the request are completed. Below we can see the XML format for the SOAP response:
+
+
+XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:example="http://www.example.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <example:MyResponse>
+            <example:Result>Success</example:Result>
+        </example:MyResponse>
+    </soapenv:Body>
+</soapenv:Envelope>
+SOAP response
+Line 4: The <example:MyResponse> element represents the response for the specific request operation.
+
+Line 5: <example:Result> represents the result of the operation, in this case, Success.
+
+Representational state transfer (REST)
+REST is the most popular architectural approach to building APIs. It utilizes the standard HTTP methods and resource-based URLs to perform operations. REST APIs are stateless, which means that they do not store any client-related information. The client sends a request and transfers a resource's state representation to the server. It is usually transferred in one of the formats; JSON, XML, or plain text.
+
+Coding example
+Below we can see an example of a REST API request in Javascript.
+
+
+Javascript
+const apiUrl = 'https://api.example.com/users';
+// Define the request parameters
+const requestOptions = {
+  method: 'GET', // HTTP method (e.g., GET, POST, PUT, DELETE)
+  headers: {
+    'Content-Type': 'application/json' // Set the content type of the request
+  },
+};
+// Make the API request
+fetch(apiUrl, requestOptions)
+  .then(response => response.json())
+  .then(data => {
+    // Process the response data
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the request
+    console.error('Error:', error);
+  });
+REST API request call
+Line 1: The apiUrl variable is set to the REST API endpoint URL.
+
+Lines 4–9: The requestOptions object is created to define the request parameters, including the HTTP method (GET) and the headers with the content type set to application/json.
+
+Line 12: The fetch() function is called with the apiUrl and requestOptions as arguments to initiate the API request.
+
+Line 13: The .then() method is used to handle the promise returned by fetch(). It takes a callback function that receives the response and calls response.json() to parse the response data as JSON.
+
+Remote procedure call (RPC)
+A remote procedure call (RPC) invokes functions or procedures on a remote system. It follows a client-server model where the client initiates a call, and the server executes the procedure requested. The client invokes the remote procedure call using a normal function syntax abstracting the complexities of network communication. It helps distributed systems to collaborate by invoking procedures as if they were a local call. The popular frameworks of remote procedure calls (RPC) are gRPC, Apache Thrift, XML RPC, JSON RPC, etc. An illustration of a remote procedure call is shown below:
+
+
+Client invoking a function over the network
+
+Client invoking a function over the network
+Conclusion
+API protocols are vital in facilitating communication and interoperability between clients and servers, enabling the development of robust and scalable web services.
+
+ Choosing the right protocol based on project requirements ensures standardized and efficient data exchange in modern web development.
+
+
+
+Knowing what a database is ?
+
+
+
+Database defined
+
+A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS). Together, the data and the DBMS, along with the applications that are associated with them, are referred to as a database system, often shortened to just database.
+
+Data within the most common types of databases in operation today is typically modeled in rows and columns in a series of tables to make processing and data querying efficient. The data can then be easily accessed, managed, modified, updated, controlled, and organized. Most databases use structured query language (SQL) for writing and querying data.
+
+What is Structured Query Language (SQL)?
+SQL is a programming language used by nearly all relational databases to query, manipulate, and define data, and to provide access control. SQL was first developed at IBM in the 1970s with Oracle as a major contributor, which led to implementation of the SQL ANSI standard, SQL has spurred many extensions from companies such as IBM, Oracle, and Microsoft. Although SQL is still widely used today, new programming languages are beginning to appear.
+
+Evolution of the database
+Databases have evolved dramatically since their inception in the early 1960s. Navigational databases such as the hierarchical database (which relied on a tree-like model and allowed only a one-to-many relationship), and the network database (a more flexible model that allowed multiple relationships), were the original systems used to store and manipulate data. Although simple, these early systems were inflexible. In the 1980s, relational databases became popular, followed by object-oriented databases in the 1990s. More recently, NoSQL databases came about as a response to the growth of the internet and the need for faster speed and processing of unstructured data. Today, cloud databases and self-driving databases are breaking new ground when it comes to how data is collected, stored, managed, and utilized.
+
+What’s the difference between a database and a spreadsheet?
+Databases and spreadsheets (such as Microsoft Excel) are both convenient ways to store information. The primary differences between the two are:
+
+How the data is stored and manipulated
+Who can access the data
+How much data can be stored
+Spreadsheets were originally designed for one user, and their characteristics reflect that. They’re great for a single user or small number of users who don’t need to do a lot of incredibly complicated data manipulation. Databases, on the other hand, are designed to hold much larger collections of organized information—massive amounts, sometimes. Databases allow multiple users at the same time to quickly and securely access and query the data using highly complex logic and language.
+
+Types of databases
+There are many different types of databases. The best database for a specific organization depends on how the organization intends to use the data.
+
+Relational databases
+Relational databases became dominant in the 1980s. Items in a relational database are organized as a set of tables with columns and rows. Relational database technology provides the most efficient and flexible way to access structured information.
+Object-oriented databases
+Information in an object-oriented database is represented in the form of objects, as in object-oriented programming.
+Distributed databases
+A distributed database consists of two or more files located in different sites. The database may be stored on multiple computers, located in the same physical location, or scattered over different networks.
+Data warehouses
+A central repository for data, a data warehouse is a type of database specifically designed for fast query and analysis.
+NoSQL databases
+A NoSQL, or nonrelational database, allows unstructured and semistructured data to be stored and manipulated (in contrast to a relational database, which defines how all data inserted into the database must be composed). NoSQL databases grew popular as web applications became more common and more complex.
+Graph databases
+A graph database stores data in terms of entities and the relationships between entities.
+OLTP databases. An OLTP database is a speedy, analytic database designed for large numbers of transactions performed by multiple users.
+These are only a few of the several dozen types of databases in use today. Other, less common databases are tailored to very specific scientific, financial, or other functions. In addition to the different database types, changes in technology development approaches and dramatic advances such as the cloud and automation are propelling databases in entirely new directions. Some of the latest databases include
+
+Open source databases
+An open source database system is one whose source code is open source; such databases could be SQL or NoSQL databases.
+Cloud databases
+A cloud database is a collection of data, either structured or unstructured, that resides on a private, public, or hybrid cloud computing platform. There are two types of cloud database models: traditional and database as a service (DBaaS). With DBaaS, administrative tasks and maintenance are performed by a service provider.
+Multimodel database
+Multimodel databases combine different types of database models into a single, integrated back end. This means they can accommodate various data types.
+Document/JSON database
+Designed for storing, retrieving, and managing document-oriented information, document databases are a modern way to store data in JSON format rather than rows and columns.
+Self-driving databases
+The newest and most groundbreaking type of database, self-driving databases (also known as autonomous databases) are cloud-based and use machine learning to automate database tuning, security, backups, updates, and other routine management tasks traditionally performed by database administrators.
+What is database software?
+Database software is used to create, edit, and maintain database files and records, enabling easier file and record creation, data entry, data editing, updating, and reporting. The software also handles data storage, backup and reporting, multi-access control, and security. Strong database security is especially important today, as data theft becomes more frequent. Database software is sometimes also referred to as a “database management system” (DBMS).
+
+Database software makes data management simpler by enabling users to store data in a structured form and then access it. It typically has a graphical interface to help create and manage the data and, in some cases, users can construct their own databases by using database software.
+
+What is a database management system (DBMS)?
+A database typically requires a comprehensive database software program known as a database management system (DBMS). A DBMS serves as an interface between the database and its end users or programs, allowing users to retrieve, update, and manage how the information is organized and optimized. A DBMS also facilitates oversight and control of databases, enabling a variety of administrative operations such as performance monitoring, tuning, and backup and recovery.
+
+Some examples of popular database software or DBMSs include MySQL, Microsoft Access, Microsoft SQL Server, FileMaker Pro, Oracle Database, and dBASE.
+
+What is a MySQL database?
+MySQL is an open source relational database management system based on SQL. It was designed and optimized for web applications and can run on any platform. As new and different requirements emerged with the internet, MySQL became the platform of choice for web developers and web-based applications. Because it’s designed to process millions of queries and thousands of transactions, MySQL is a popular choice for ecommerce businesses that need to manage multiple money transfers. On-demand flexibility is the primary feature of MySQL.
+
+MySQL is the DBMS behind some of the top websites and web-based applications in the world, including Airbnb, Uber, LinkedIn, Facebook, Twitter, and YouTube.
+
+Using databases to improve business performance and decision-making
+With massive data collection from the Internet of Things transforming life and industry across the globe, businesses today have access to more data than ever before. Forward-thinking organizations can now use databases to go beyond basic data storage and transactions to analyze vast quantities of data from multiple systems. Using database and other computing and business intelligence tools, organizations can now leverage the data they collect to run more efficiently, enable better decision-making, and become more agile and scalable. Optimizing access and throughput to data is critical to businesses today because there is more data volume to track. It’s critical to have a platform that can deliver the performance, scale, and agility that businesses need as they grow over time.
+
+The self-driving database is poised to provide a significant boost to these capabilities. Because self-driving databases automate expensive, time-consuming manual processes, they free up business users to become more proactive with their data. By having direct control over the ability to create and use databases, users gain control and autonomy while still maintaining important security standards.
+
+Database challenges
+Today’s large enterprise databases often support very complex queries and are expected to deliver nearly instant responses to those queries. As a result, database administrators are constantly called upon to employ a wide variety of methods to help improve performance. Some common challenges that they face include:
+
+Absorbing significant increases in data volume. The explosion of data coming in from sensors, connected machines, and dozens of other sources keeps database administrators scrambling to manage and organize their companies’ data efficiently.
+Ensuring data security. Data breaches are happening everywhere these days, and hackers are getting more inventive. It’s more important than ever to ensure that data is secure but also easily accessible to users.
+Keeping up with demand. In today’s fast-moving business environment, companies need real-time access to their data to support timely decision-making and to take advantage of new opportunities.
+Managing and maintaining the database and infrastructure. Database administrators must continually watch the database for problems and perform preventative maintenance, as well as apply software upgrades and patches. As databases become more complex and data volumes grow, companies are faced with the expense of hiring additional talent to monitor and tune their databases.
+Removing limits on scalability. A business needs to grow if it’s going to survive, and its data management must grow along with it. But it’s very difficult for database administrators to predict how much capacity the company will need, particularly with on-premises databases.
+Ensuring data residency, data sovereignty, or latency requirements. Some organizations have use cases that are better suited to run on-premises. In those cases, engineered systems that are pre-configured and pre-optimized for running the database are ideal. Customers achieve higher availability, greater performance and up to 40% lower cost with Oracle Exadata, according to Wikibon’s recent analysis (PDF).
+Addressing all of these challenges can be time-consuming and can prevent database administrators from performing more strategic functions.
+
+How autonomous technology is improving database management
+Self-driving databases are the wave of the future—and offer an intriguing possibility for organizations that want to use the best available database technology without the headaches of running and operating that technology.
+
+Self-driving databases use cloud-based technology and machine learning to automate many of the routine tasks required to manage databases, such as tuning, security, backups, updates, and other routine management tasks. With these tedious tasks automated, database administrators are freed up to do more strategic work. The self-driving, self-securing, and self-repairing capabilities of self-driving databases are poised to revolutionize how companies manage and secure their data, enabling performance advantages, lower costs, and improved security.
+
+Future of databases and autonomous databases
+The first autonomous database was announced in late 2017, and multiple independent industry analysts quickly recognized the technology and its potential impact on computing.
+
+A Wikibon 2021 report (PDF) praised autonomous database technology, saying, “Oracle has by far the best Tier-1 Cloud Database Platform…Wikibon believes Oracle has the strongest Cloud Database Platform with Autonomous Database.”
+
+And KuppingerCole’s 2021 Leadership Compass (PDF) said, "The Oracle Autonomous Database, which completely automates provisioning, management, tuning, and upgrade 
+
+processes of database instances without any downtime, not just substantially increases security and compliance of sensitive data stored in Oracle Databases but 
+
+makes a compelling argument for moving this data to the Oracle Cloud." Because Oracle Autonomous Database is built on the highly available and scalable architecture 
+
+of Oracle Exadata, it’s possible to easily scale the database deployment as needs grow.
+
+
+Learning the meaning of web development?
+
+
+Web development is the process of building, programming, and maintaining websites and web applications. Website developers use various programming languages, like 
+HTML, CSS, and JavaScript, to develop websites and web applications.
+
+
+
+
+
+
